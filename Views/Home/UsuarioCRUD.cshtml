@@ -1,0 +1,68 @@
+﻿
+@{
+    ViewBag.Title = "UsuarioCRUD con Angular JS";
+}
+
+<div ng-app="Homeapp" ng-controller="HomeController">
+    <input type="hidden" ng-model="Id" ng-init="Id='0'" />
+
+    <div class="row">
+        <h3>Mantenedor de Usuarios</h3>
+        <div class="form-inline">
+            <div class="form-group">
+                <input type="text" class="form-control" ng-model="name" placeholder="Nombre de Usuario">
+            </div>
+            <div class="form-group">
+                <input type="email" class="form-control" ng-model="email" placeholder="Correo Electrónico">
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" ng-model="password" placeholder="Contraseña">
+            </div>
+        </div>
+        <div class="form-inline">
+            <div class="form-group">
+                <input type="number" class="form-control" ng-model="contrycode" placeholder="Código de País" maxlength="2">
+            </div>
+            <div class="form-group">
+                <input type="number" class="form-control" ng-model="citycode" placeholder="Código de Ciudad" maxlength="1">
+            </div>
+            <div class="form-group">
+                <input type="number" class="form-control" ng-model="number" placeholder="Teléfono" maxlength="8">
+            </div>
+        </div>
+        <div class="form-inline">
+            <button class="btn btn-primary" ng-click="Guardar()">Guardar</button>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <h3>Lista de Usuarios</h3>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Correo Electrónico</th>
+                    <th>Teléfono</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                @* <tr ng-repeat="u in UsuarioData">  *@
+                <tr>
+                    <td>{{UsuarioData.Id}}</td>
+                    <td>{{UsuarioData.name}}</td>
+                    <td>{{UsuarioData.email}}</td>
+                    <td>{{UsuarioData.contrycode}}-{{UsuarioData.citycode}}-{{UsuarioData.number}}</td>
+                    <td>
+                        <button type="button" class="btn btn-primary" id="{{UsuarioData.Id}}" ng-click="ObtenerPorId(UsuarioData.Id)">Actualizar</button>
+                        <button type="button" class="btn btn-danger" id="{{UsuarioData.Id}}" ng-click="Eliminar(UsuarioData.Id)">Eliminar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="~/Scripts/angular.min.js"></script>
+<script src="~/Scripts/AngularController/HomeAngularJS.js"></script> 
